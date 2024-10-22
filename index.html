@@ -8,9 +8,12 @@
 </head>
 <body>
     <canvas></canvas>
-    <input id="line_width" type="range" min="1" max="14" value="7" step="0.5">
-    <div>
-        <input type="color" id="color">
+    <div class="stroke_wrap">
+        <input id="line_width" type="range" min="1" max="20" value="10" step="0.2" class="input_range">
+        <span class="stroke_text"></span>
+    </div>
+    <div class="color_wrap">
+        <input type="color" id="color" class="input_color">
         <div class="color_option_wrap">
             <div class="color_option" style="background-color: #1abc9c;" data-color="#1abc9c"></div>
             <div class="color_option" style="background-color: #3498db;" data-color="#3498db"></div>
@@ -26,9 +29,11 @@
             <div class="color_option" style="background-color: #e67e22;" data-color="#e67e22"></div>
         </div>
     </div>
-    <button id="btn_mode">Fill</button>
-    <button id="btn_clean">Clean</button>
-    <button id="btn_eraser">Erase</button>
+    <div class="btn_wrap">
+        <button id="btn_mode">Fill</button>
+        <button id="btn_clean">Clean</button>
+        <button id="btn_eraser">Erase</button>
+    </div>
     <script src="./app.js"></script>
 </body>
 </html>
