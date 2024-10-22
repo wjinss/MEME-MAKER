@@ -3,16 +3,27 @@ const ctx = canvas.getContext("2d")
 canvas.width = 800
 canvas.height = 800
 
-ctx.fillRect(350 - 40,200 - 30,15,100)
-ctx.fillRect(260 - 40,200 - 30,60,200)
-ctx.fillRect(220 - 40,200 - 30,15,100)
+ctx.lineWidth = 1
+const colors =[
+"#ff3838",
+"#ffb8b8",
+"#c56cf0",
+"#ff9f1a",
+"#fff200",
+"#32ff7e",
+"#7efff5",
+"#18dcff",
+"#7d5fff",
+]
 
-ctx.arc(250, 100, 50, 0, 2 * Math.PI) //arc에서 endangle값을 2로 화면 정원이 그려짐
-ctx.fill()
-
-
-ctx.beginPath()//색상을 변경할려면 기존의 패스를 끊고 새로 시작해야됨.
-ctx.fillStyle = "cyan"
-ctx.arc(260 + 10, 80, 8, Math.PI, 2 * Math.PI)
-ctx.arc(220 + 10, 80, 8, Math.PI, 2 * Math.PI)
-ctx.fill()
+function onClick(e){
+    ctx.beginPath()
+    
+    ctx.moveTo(Math.random()*800,Math.random()*800)
+    const color = colors[Math.floor(Math.random() * colors.length)]
+    ctx.strokeStyle = color
+    ctx.lineTo(e.offsetX, e.offsetY)
+    ctx.stroke()
+    
+}
+canvas.addEventListener("mousemove", onClick)
