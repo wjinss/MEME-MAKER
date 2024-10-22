@@ -1,11 +1,17 @@
 const btnMode = document.querySelector("#btn_mode")
+const btnClean = document.querySelector("#btn_clean")
+const btnEraser = document.querySelector("#btn_eraser")
 const colorOptions = Array.from(document.querySelectorAll(".color_option"))
 const color = document.querySelector("#color")
 const lineWidth = document.querySelector("#line_width")
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
-canvas.width = 800
-canvas.height = 800
+
+const CANVAS_WIDTH = 800
+const CANVAS_HEIGHT = 800
+
+canvas.width = CANVAS_WIDTH
+canvas.height = CANVAS_HEIGHT
 ctx.lineWidth = lineWidth.value
 
 let isPainting = false
@@ -42,16 +48,25 @@ function onColorClick(e){
 function onModeClick(){
     if(isFilling){
         isFilling = false   
-        btnMode.innerText = "Fill"
+        btnMode.textContent = "Fill"
     } else{
         isFilling = true
-        btnMode.innerText = "Draw"
+        btnMode.textContent = "Draw"
     }
 }
 function onCanvasClick(){
     if(isFilling){
-        ctx.fillRect(0,0,800,800)
+        ctx.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT)
     }
+}
+function onCleanClick(){
+    ctx.fillStyle = "white"
+    ctx.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT)
+}
+function onEraserClick(){
+    ctx.strokeStyle = "white";
+    isFilling = false;
+    btnMode.textContent = "Fill"
 }
 
 canvas.addEventListener("mousemove", onMove)
@@ -59,8 +74,11 @@ canvas.addEventListener("mousedown", startPainting)
 canvas.addEventListener("mouseup", canclePainting)
 canvas.addEventListener("mouseleave", canclePainting)
 canvas.addEventListener("click", onCanvasClick)
+
 lineWidth.addEventListener("change", onLineWidthChange)
 color.addEventListener("change", onColorChange)
 colorOptions.forEach(color => color.addEventListener("click", onColorClick))
 
 btnMode.addEventListener("click", onModeClick)
+btnClean.addEventListener("click", onCleanClick)
+btnEraser.addEventListener("click",onEraserClick)
