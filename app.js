@@ -1,8 +1,9 @@
+const lineWidth = document.querySelector("#line_width")
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 canvas.width = 800
 canvas.height = 800
-ctx.lineWidth = 1
+ctx.lineWidth = lineWidth.value
 
 let isPainting = false
 function onMove(e){
@@ -11,6 +12,7 @@ function onMove(e){
         ctx.stroke();
         return;
     }
+    ctx.beginPath()
     ctx.moveTo(e.offsetX, e.offsetY)
 }
 function startPainting(){
@@ -19,8 +21,15 @@ function startPainting(){
 function canclePainting(){
     isPainting = false
 }
+function onLineWidthChange(e){
+    ctx.lineWidth = e.target.value
+}
+
+
 canvas.addEventListener("mousemove", onMove)
 canvas.addEventListener("mousedown", startPainting)
 canvas.addEventListener("mouseup", canclePainting)
 canvas.addEventListener("mouseleave", canclePainting)
+
+lineWidth.addEventListener("change", onLineWidthChange)
 
