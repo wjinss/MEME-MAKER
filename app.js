@@ -4,6 +4,7 @@ const btnEraser = document.querySelector("#btn_eraser")
 const colorOptions = Array.from(document.querySelectorAll(".color_option"))
 const color = document.querySelector("#color")
 const lineWidth = document.querySelector("#line_width")
+const lineWidthText = document.querySelector(".stroke_text")
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
@@ -34,6 +35,7 @@ function canclePainting(){
 }
 function onLineWidthChange(e){
     ctx.lineWidth = e.target.value
+    lineWidthText.textContent = `${e.target.value}px`
 }
 function onColorChange(e){
     ctx.fillStyle=ctx.strokeStyle = e.target.value
