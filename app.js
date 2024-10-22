@@ -1,3 +1,4 @@
+const color = document.querySelector("#color")
 const lineWidth = document.querySelector("#line_width")
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
@@ -24,6 +25,10 @@ function canclePainting(){
 function onLineWidthChange(e){
     ctx.lineWidth = e.target.value
 }
+function onColorChange(e){
+    ctx.strokeStyle = e.target.value
+    ctx.fillStyle = e.target.value
+}
 
 
 canvas.addEventListener("mousemove", onMove)
@@ -32,4 +37,4 @@ canvas.addEventListener("mouseup", canclePainting)
 canvas.addEventListener("mouseleave", canclePainting)
 
 lineWidth.addEventListener("change", onLineWidthChange)
-
+color.addEventListener("change", onColorChange)
