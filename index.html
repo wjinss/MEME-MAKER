@@ -10,7 +10,7 @@
     <canvas></canvas>
     <div class="stroke_wrap">
         <input id="line_width" type="range" min="1" max="20" value="10" step="0.2" class="input_range">
-        <span class="stroke_text"></span>
+        <span class="stroke_text">10px</span>
     </div>
     <div class="color_wrap">
         <input type="color" id="color" class="input_color">
@@ -35,6 +35,8 @@
         <button id="btn_eraser">Erase</button>
     </div>
     <input type="file" accept="image/*" id="file">
+    <input type="text" placeholder="Write and then double click" id="text">
+    <button id="save">Svae image</button>
     <script src="./app.js"></script>
 </body>
 </html>
