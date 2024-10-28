@@ -21,6 +21,7 @@ ctx.lineCap = "round"
 let isPainting = false
 let isFilling = false
 
+
 function onMove(e){
     if(isPainting){
         ctx.lineTo(e.offsetX, e.offsetY)
